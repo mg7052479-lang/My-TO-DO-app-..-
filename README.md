@@ -5,10 +5,11 @@ A simple To-Do List application built using HTML, CSS, and JavaScript.  It allow
 A simple To-Do List application built using vanilla JavaScript.
 
 ## Features
-- Add new tasks
-- Mark tasks as completed
-- Delete tasks
-- Saves tasks using localStorage
+- Add new todos
+- Delete todos
+- Improved delete button functionality
+- Save todos using localStorage
+
 
 ## Tech Stack
 - HTML
