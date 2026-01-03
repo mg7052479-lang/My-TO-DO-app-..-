@@ -3,7 +3,7 @@ const listContainer = document.getElementById ("listContainer");
 const button = document.getElementById ("button")
 
 
-button.addEventListener('click', function () {
+button.addEventListener('click',  function () {
     if (inputBox.value === "" ){
         alert("Please Write something");
     }else {
@@ -11,11 +11,11 @@ button.addEventListener('click', function () {
         li.innerHTML = inputBox.value ;
         listContainer.appendChild(li);
         let span = document.createElement("span");
-        span.innerHTML = ("\u00d7");
+        span.innerHTML = ("🗑️");     
         li.appendChild(span);
     }
     inputBox.value = '';
-        saveData();         //Always remember this small attention to detail thing/// 
+        saveData();         
         
 });
 
