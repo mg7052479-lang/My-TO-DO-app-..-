@@ -24,6 +24,7 @@
 }
 
 .todo h2 {
+    top: 30px;
     display: flex ;
     justify-content: center;
     align-items: center;
@@ -81,21 +82,6 @@ ul li {
     user-select: none;
     position: relative;
 }
-
-/* ul li::before {
-    text-align: center;
-    content: '';
-    position: absolute;
-    border-radius: 50%;
-    height: 28px;
-    width: 28px;
-    background-image: url(images/download\ \(2\).png);
-    background-size: cover;
-    background-position: center;
-    top: 12px;
-    left: 8px;
-} */
-
 
 ul li::before {
     content: '';
