@@ -1,26 +1,33 @@
-# My-TO-DO-app-..-
-A simple To-Do List application built using HTML, CSS, and JavaScript.  It allows users to add, delete, and mark tasks as completed.  Beginner-friendly project to practice DOM manipulation and localStorage...
-# To-Do App
+# Todo App
 
-A simple To-Do List application built using vanilla JavaScript.
+A simple and clean **JavaScript Todo App** with modern features. This project is perfect for learning DOM manipulation, event handling, and localStorage in JavaScript.
 
-## Features
-- Add new todos
-- Delete todos
-- Improved delete button functionality
-- Save todos using localStorage
+---
 
+##  Features
 
-## Tech Stack
-- HTML
-- CSS
-- JavaScript
+- **Add tasks** – Write a task and click the **Add** button
+- **Delete tasks** – Click the 🗑️ icon to remove a task
+- **Mark tasks completed** – Click a task to mark it as done
+- **Edit tasks** – Double-click a task to edit it, then press **Enter** or click outside to save
+- **Persistent storage** – Tasks are saved in **localStorage**, so they remain after refreshing the page
 
-## Purpose
-This project is built to practice JavaScript DOM manipulation and improve front-end development skills.
+---
 
-## Future Improvements
-- Edit tasks
-- Filter completed tasks
-- Dark mode
+##  How to Use
+1. Type a task in the input box
+2. Click **Add** to create the task
+3. Click a task to mark it as completed
+4. Click the 🗑️ icon to delete a task
+5. Double-click a task to edit it
 
+---
+
+##  Technologies Used
+
+- HTML5  
+- CSS3  
+- JavaScript (Vanilla JS)  
+- Browser **localStorage**
+
+---
