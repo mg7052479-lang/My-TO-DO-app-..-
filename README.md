@@ -1,33 +1,48 @@
 # Todo App
 
-A simple and clean **JavaScript Todo App** with modern features. This project is perfect for learning DOM manipulation, event handling, and localStorage in JavaScript.
+## Short Description
+A simple and interactive Todo App built with HTML, CSS, and JavaScript. Add, edit, delete, and mark tasks as completed. Tasks are saved in your browser so they stay even if you refresh the page.
 
 ---
 
-##  Features
+## Extended Description
+This Todo App is easy to use and beginner-friendly. You can:
+- Add new tasks
+- Edit tasks by double-clicking
+- Delete tasks with the 🗑️ icon
+- Mark tasks as completed by clicking on them
+- Prevent adding duplicate tasks
 
-- **Add tasks** – Write a task and click the **Add** button
-- **Delete tasks** – Click the 🗑️ icon to remove a task
-- **Mark tasks completed** – Click a task to mark it as done
-- **Edit tasks** – Double-click a task to edit it, then press **Enter** or click outside to save
-- **Persistent storage** – Tasks are saved in **localStorage**, so they remain after refreshing the page
-
----
-
-##  How to Use
-1. Type a task in the input box
-2. Click **Add** to create the task
-3. Click a task to mark it as completed
-4. Click the 🗑️ icon to delete a task
-5. Double-click a task to edit it
+All tasks are stored in **localStorage**, so your data stays safe even after refreshing the page or closing the browser. This app is a great way to practice **JavaScript DOM manipulation, events, and localStorage**.
 
 ---
 
-##  Technologies Used
-
-- HTML5  
-- CSS3  
-- JavaScript (Vanilla JS)  
-- Browser **localStorage**
+## Features
+- Add tasks
+- Edit tasks (dblclick)
+- Delete tasks
+- Mark tasks as completed
+- Duplicate task prevention
+- Tasks persist in localStorage
 
 ---
+
+## How to Use
+1. Type your task in the input box
+2. Click the **Add** button
+3. Click on a task to mark it as completed
+4. Double-click a task to edit it
+5. Click the 🗑️ icon to delete a task
+6. Tasks are saved automatically in your browser
+
+---
+
+## Technologies Used
+- HTML
+- CSS
+- JavaScript (Vanilla JS)
+- Browser localStorage
+
+---
+
+## Project Structure
