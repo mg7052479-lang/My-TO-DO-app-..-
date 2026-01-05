@@ -4,10 +4,17 @@ const button = document.getElementById("button");
 
 button.addEventListener("click", function () {
     const taskText = inputBox.value.trim();
-    if (!taskText) {
+
+    if (taskText === "") {
         alert("Please write something");
         return;
     }
+
+    if (isDuplicateTask(taskText)) {
+        alert("Task already exists");
+        return;
+    }
+
     addTask(taskText);
     inputBox.value = "";
     saveData();
@@ -82,8 +89,20 @@ function saveData() {
 
 function showData() {
     const tasks = JSON.parse(localStorage.getItem("tasks") || "[]");
-    listContainer.innerHTML = ""; // clear list
+    listContainer.innerHTML = ""; 
     tasks.forEach(task => addTask(task.text, task.checked));
 }
+
+function isDuplicateTask(taskText) {
+    const tasks = document.querySelectorAll("li");
+
+    for (let li of tasks) {
+        if (li.firstChild.nodeValue.toLowerCase() === taskText.toLowerCase()) {
+            return true;
+        }
+    }
+    return false;
+}
+
 
 showData();
