@@ -1,113 +1,213 @@
-const addBtn = document.getElementById("button")
-const inputBox = document.getElementById("inputbox")
-const listContainer = document.getElementById("listContainer")
+const addBtn = document.getElementById("button");
+const inputBox = document.getElementById("inputbox");
+const listContainer = document.getElementById("listContainer");
 
-const allBtn = document.getElementById("all")
-const complete = document.getElementById("complete")
-const pending = document.getElementById("pending")
+const allBtn = document.getElementById("all");
+const complete = document.getElementById("complete");
+const pending = document.getElementById("pending");
 
 
-addBtn.addEventListener("click", function() {
+// ===============================
+// ADD TASK
+// ===============================
+addBtn.addEventListener("click", function () {
     const textTask = inputBox.value.trim();
 
-    if (textTask === ""){
-        alert("write something task should not be empty");
-        return ;
+    if (textTask === "") {
+        alert("Write something. Task should not be empty.");
+        return;
     }
-    if (isDuplicateTask(textTask)){
-        alert ("PLEASE WRITE SOMETHING NEW THIS TASK IS ALREADY EXITS")
-        return ;
+
+    if (isDuplicateTask(textTask)) {
+        alert("This task already exists.");
+        return;
     }
+
     addTask(textTask, false);
-    inputBox.value = ""
+    inputBox.value = "";
     saveData();
+});
 
 
-})
-
- function addTask(text , checked){
-     const li = document.createElement("li");
-    li.textContent = text ;
+// ===============================
+// CREATE TASK
+// ===============================
+function addTask(text, checked) {
+    const li = document.createElement("li");
+    li.textContent = text;
 
     if (checked) {
-        li.classList.add("checked")
+        li.classList.add("checked");
     }
-  const deleteBtn = document.createElement("span");
-   deleteBtn.innerHTML = "🗑️"
-   li.appendChild(deleteBtn);
 
-   listContainer.appendChild(li)
+    const deleteBtn = document.createElement("span");
+    deleteBtn.innerHTML = "🗑️";
+    deleteBtn.classList.add("delete");
+
+    li.appendChild(deleteBtn);
+    listContainer.appendChild(li);
+}
 
 
- } 
-listContainer.addEventListener("click",function(e) {
-    const li = e.target.tagName === "LI" ? e.target : e.target.parentElement ;
+// ===============================
+// CLICK & DELETE
+// ===============================
+listContainer.addEventListener("click", function (e) {
+    const li = e.target.closest("li");
+    if (!li) return;
 
-    if (e.target.tagName === "LI"){
+    // ❗ prevent click actions while editing
+    if (li.querySelector("input")) return;
+
+    // toggle complete
+    if (e.target === li) {
         li.classList.toggle("checked");
         saveData();
     }
-    if (e.target.tagName === "SPAN"){
+
+    // delete task
+    if (e.target.classList.contains("delete")) {
         li.remove();
         saveData();
     }
-} )
+});
 
-// Duplicate task  give alert // 
 
-function isDuplicateTask (text) {
-    const tasks = listContainer.querySelectorAll("li");
+// ===============================
+// DOUBLE CLICK → EDIT
+// ===============================
+listContainer.addEventListener("dblclick", function (e) {
+    const li = e.target.closest("li");
+    if (!li) return;
 
-    for (let li of tasks){
-        if (li.firstChild.nodeValue.toLowerCase() === text.toLowerCase()){
-            return true ;
+    startEdit(li);
+});
+
+
+// ===============================
+// START EDIT
+// ===============================
+function startEdit(li) {
+    if (li.querySelector("input")) return;
+
+    const oldText = li.firstChild.nodeValue;
+
+    const input = document.createElement("input");
+    input.type = "text";
+    input.value = oldText;
+    input.className = "edit-input";
+
+    li.firstChild.nodeValue = "";
+    li.insertBefore(input, li.firstChild);
+
+    input.focus();
+
+    // save on ENTER
+    input.addEventListener("keydown", function (e) {
+        if (e.key === "Enter") {
+            saveEdit(li, input, oldText);
         }
-    }
-    return false ;
+    });
+
+    // save on BLUR
+    input.addEventListener("blur", function () {
+        saveEdit(li, input, oldText);
+    });
 }
 
 
-/// filtring the tasks // 
-allBtn.addEventListener("click", ()=> filterTasks("all"))
-complete.addEventListener("click", ()=> filterTasks("complete"))
-pending.addEventListener("click", ()=> filterTasks("pending"))
+// ===============================
+// SAVE EDIT
+// ===============================
+function saveEdit(li, input, oldText) {
+    const newText = input.value.trim();
+
+    if (newText === "") {
+        li.firstChild.nodeValue = oldText;
+    } 
+    else if (newText !== oldText && isDuplicateTask(newText)) {
+        alert("Task already exists.");
+        li.firstChild.nodeValue = oldText;
+    } 
+    else {
+        li.firstChild.nodeValue = newText;
+        saveData();
+    }
+
+    input.remove();
+}
+
+
+// ===============================
+// DUPLICATE CHECK
+// ===============================
+function isDuplicateTask(text) {
+    const tasks = listContainer.querySelectorAll("li");
+
+    for (let li of tasks) {
+        if (li.firstChild.nodeValue.toLowerCase() === text.toLowerCase()) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
+// ===============================
+// FILTER TASKS
+// ===============================
+allBtn.addEventListener("click", () => filterTasks("all"));
+complete.addEventListener("click", () => filterTasks("complete"));
+pending.addEventListener("click", () => filterTasks("pending"));
 
 function filterTasks(type) {
     const tasks = listContainer.querySelectorAll("li");
+
     tasks.forEach(li => {
         const isCompleted = li.classList.contains("checked");
-        
-        if (type === "all"){
+
+        if (type === "all") {
             li.style.display = "flex";
-        }else if (type === "complete") {
-            li.style.display = isCompleted ? "flex" : "none" ;
-        }else if (type === "pending") {
-            li.style.display = !isCompleted ? "flex" : "none" ;
+        } 
+        else if (type === "complete") {
+            li.style.display = isCompleted ? "flex" : "none";
+        } 
+        else if (type === "pending") {
+            li.style.display = !isCompleted ? "flex" : "none";
         }
-
-    })
+    });
 }
 
 
-// save data // 
-function saveData () {
-    const tasks= [];
+// ===============================
+// SAVE TO LOCAL STORAGE
+// ===============================
+function saveData() {
+    const tasks = [];
 
-    listContainer.querySelectorAll("li").forEach (li => {
+    listContainer.querySelectorAll("li").forEach(li => {
         tasks.push({
-            text : li.firstChild.nodeValue ,
-            checked : li.classList.contains("checked")
-        })
-    })
-    localStorage.setItem("tasks" , JSON.stringify(tasks))
+            text: li.firstChild.nodeValue,
+            checked: li.classList.contains("checked")
+        });
+    });
+
+    localStorage.setItem("tasks", JSON.stringify(tasks));
 }
 
-function showData (){
-    const tasks = JSON.parse(localStorage.getItem("tasks", "[]"))
-    listContainer.innerHTML = ""
-    tasks.forEach(task =>addTask(task.text , task.checked))
+
+// ===============================
+// LOAD FROM LOCAL STORAGE
+// ===============================
+function showData() {
+    const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    listContainer.innerHTML = "";
+
+    tasks.forEach(task => addTask(task.text, task.checked));
 }
 
-// LOAD ON REFRESH
+
+// ===============================
+// INIT
+// ===============================
 window.addEventListener("DOMContentLoaded", showData);
-// 
