@@ -1,69 +1,119 @@
-# ✅ To-Do App
+)
 
-A clean and minimal **To-Do App** built with **HTML, CSS, and JavaScript** to help manage daily tasks and improve productivity.
+📝 To-Do List App (Vanilla JavaScript)
 
----
+A clean, fast, and interactive To-Do List application built using HTML, CSS, and Vanilla JavaScript.
+This app helps you manage daily tasks with features like add, edit, delete, filter, and persistent storage using localStorage.
 
-## ✨ Features
+🚀 Live Features
 
-* ➕ Add new tasks
-* ✏️ Edit existing tasks
-* ✅ Mark tasks as completed
-* 🗑️ Delete tasks
-* 🧠 Simple and user-friendly UI
+✨ Add Tasks
 
----
+Prevents empty tasks
 
-## 🛠️ Tech Stack
+Prevents duplicate tasks
 
-* HTML5
-* CSS3
-* JavaScript (DOM Manipulation)
+✏️ Edit Tasks
 
----
+Double-click any task to edit
 
-## 📂 Project Structure
+Save with Enter or when input loses focus
 
-```
-todo-app/
-│── index.html
-│── style.css
-│── script.js
-```
+Prevents duplicate task names
 
----
+✅ Mark as Complete / Pending
 
-## 🚀 How to Run the Project
+Click on a task to mark it completed
 
-1. Clone or download the repository
-2. Open `index.html` in your browser
-3. Start managing your tasks ✅
+Visual distinction using styles
 
----
+🗂️ Task Filters
 
-## 🎯 What I Learned
+All → Show all tasks
 
-* Event handling in JavaScript
-* Dynamic DOM updates
-* Writing clean and readable code
-* Improving UI with small interactions
+Completed → Show only completed tasks
 
----
+Pending → Show only pending tasks
 
-## 🔮 Future Improvements
+🗑️ Delete Tasks
 
-* Save tasks using LocalStorage
-* Filter completed / pending tasks
-* Dark mode
-* Drag & drop tasks
+Remove tasks instantly with a delete button
 
----
+💾 Persistent Storage
 
-## 👤 Author
+Tasks are saved in localStorage
 
-**Mohammed**
-Aspiring Web Developer 🚀
+Data remains even after page refresh
 
----
+🛠️ Built With
 
-⭐ If you like this project, don’t forget to star the repo!
+HTML5
+
+CSS3
+
+JavaScript (Vanilla JS)
+
+Local Storage API
+
+No frameworks. No libraries. Just pure JavaScript 💪
+
+📂 Project Structure
+📦 todo-app
+ ┣ 📜 index.html
+ ┣ 📜 style.css
+ ┣ 📜 script.js
+ ┗ 📜 README.md
+
+🧠 How It Works
+
+Tasks are stored as objects:
+
+{
+  text: "Buy groceries",
+  checked: false
+}
+
+
+All tasks are saved to localStorage
+
+On page load, tasks are restored automatically
+
+Editing is handled inline using an input field
+
+Filters work by checking the task’s checked state
+
+🖱️ How to Use
+
+Type a task in the input box
+
+Click Add to save the task
+
+Click a task to mark it complete
+
+Double-click a task to edit it
+
+Use filter buttons to view tasks
+
+Refresh the page — your tasks stay safe 😎
+
+🌟 Future Improvements
+
+⏰ Due dates
+
+📱 Mobile responsiveness
+
+🎨 Theme switch (Dark / Light)
+
+🔔 Notifications
+
+📊 Task statistics
+
+🙌 Author
+
+Mohammed
+Frontend Developer in progress 🚀
+Learning by building real projects 💻
+
+📜 License
+
+This project is open-source and free to use.
