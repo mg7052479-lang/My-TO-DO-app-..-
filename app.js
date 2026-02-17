@@ -153,9 +153,9 @@ function isDuplicateTask(text) {
 }
 
 
-// ===============================
+// ==================================
 // FILTER TASKS
-// ===============================
+// ==================================
 allBtn.addEventListener("click", () => filterTasks("all"));
 complete.addEventListener("click", () => filterTasks("complete"));
 pending.addEventListener("click", () => filterTasks("pending"));
