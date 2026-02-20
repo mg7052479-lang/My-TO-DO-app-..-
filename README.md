@@ -1,5 +1,3 @@
-)
-
 📝 To-Do List App (Vanilla JavaScript)
 
 A clean, fast, and interactive To-Do List application built using HTML, CSS, and Vanilla JavaScript.
@@ -110,7 +108,7 @@ Refresh the page — your tasks stay safe 😎
 
 🙌 Author
 
-Mohammed
+Mohammed Ghouse ...
 Frontend Developer in progress 🚀
 Learning by building real projects 💻
 
