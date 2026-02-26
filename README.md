@@ -19,7 +19,7 @@ Save with Enter or when input loses focus
 
 Prevents duplicate task names
 
-✅ Mark as Complete / Pending
+✅ Mark as Complete / Pending and All
 
 Click on a task to mark it completed
 
